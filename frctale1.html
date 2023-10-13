@@ -16,11 +16,48 @@
         ctx.beginPath();
         ctx.save();
 
+        ctx.strokeStyle = "gold";
+        ctx.fillStyle = "white";
+
+        ctx.translate(startX, startY);
+        ctx.rotate(angle * Math.PI/50);
+        ctx.moveTo(2, 2);
+        ctx.lineTo(2, -len);
+        ctx.stroke();
+
+        ctx.shadowBlur =20 ;
+        ctx.shadowColor = "rgba(200,120,255,0.9)";
+
+        if(len < 17) {
+            ctx.restore();
+            return;
+        }
+
+        draw(0, -len, len*0.8, angle-15, branchWidth*0.9);
+        draw(0, -len, len*0.8, angle+15, branchWidth*0.9);
+
+        ctx.restore();
+    }
+    draw(400, 600, 130, 0, 5)       
+    </script>
+</body>
+
+<body>
+ <canvas id="my_canvas" width="1500" height="900"></canvas>
+    <script>
+    var myCanvas = document.getElementById("my_canvas");
+    var ctx = myCanvas.getContext("2d");
+    function draw(startX, startY, len, angle, branchWidth) {
+        ctx.lineWidth = branchWidth;
+
+        ctx.beginPath();
+        ctx.save();
+
         ctx.strokeStyle = "black";
         ctx.fillStyle = "black";
 
         ctx.translate(startX, startY);
-        ctx.rotate(angle * Math.PI/80);
+        ctx.rotate(angle * Math.PI/60);
         ctx.moveTo(2, 2);
         ctx.lineTo(2, -len);
         ctx.stroke();
@@ -38,7 +75,7 @@
 
         ctx.restore();
     }
-    draw(400, 600, 120, 0, 10)       
+    draw(400, 600, 120, 0, 0)       
     </script>
 </body>
 </html>
